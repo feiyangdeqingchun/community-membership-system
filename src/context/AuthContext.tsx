@@ -24,6 +24,7 @@ export type Merchant = {
 type AuthContextType = {
   user: User | null;
   currentUser: User | null;
+  isLoading: boolean;
   login: (username: string, password: string) => Promise<boolean>;
   logout: () => void;
   register: (name: string) => Promise<{ username: string } | null>;
@@ -159,6 +160,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
       value={{
         user,
         currentUser: user,
+        isLoading: false,
         login,
         logout,
         register,
