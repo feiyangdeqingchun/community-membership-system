@@ -21,7 +21,7 @@ export type Merchant = {
   name: string;
 };
 
-type AuthContextType = {
+export type AuthContextType = {
   user: User | null;
   currentUser: User | null;
   isLoading: boolean;
