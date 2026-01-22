@@ -49,7 +49,7 @@ export default function StorePage({ params }: { params: Promise<{ storeId: strin
                 const points = Math.floor(Math.random() * 50) + 10; // 随机 10-60 积分
                 setEarnedPoints(points);
                 if (currentUser) {
-                    addPoints(currentUser.id, points);
+                    addPoints(points);
                 }
                 setStatus("success");
             }, 2500);

@@ -11,6 +11,9 @@ export async function POST(request: Request) {
             return NextResponse.json({ error: '用户名和密码不能为空' }, { status: 400 });
         }
 
+        console.log('Attempting login for:', username);
+        console.log('Database URL env check:', process.env.DATABASE_URL ? 'Exists' : 'Missing');
+
         const user = await prisma.user.findFirst({
             where: {
                 username,
@@ -27,8 +30,13 @@ export async function POST(request: Request) {
 
         return NextResponse.json(userWithoutPassword);
 
-    } catch (error) {
-        console.error('Login error:', error);
-        return NextResponse.json({ error: '登录服务异常' }, { status: 500 });
+    } catch (error: any) {
+        console.error('Login error full details:', error);
+        console.error('Login error message:', error.message);
+        console.error('Login error stack:', error.stack);
+        return NextResponse.json({
+            error: '登录服务异常',
+            details: error.message
+        }, { status: 500 });
     }
 }
