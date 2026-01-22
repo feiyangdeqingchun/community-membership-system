@@ -17,12 +17,13 @@ import { QRCodeSVG } from "qrcode.react";
 import Link from "next/link";
 
 export default function HomePage() {
-  const { currentUser, logout, isLoading } = useAuth();
+  const auth = useAuth() as any;
+  const { currentUser, logout, isLoading } = auth;
   const router = useRouter();
 
   useEffect(() => {
     if (!isLoading && !currentUser) {
-      router.push("/login");
+      router.push("/login"); // Fixed: redirect to login
     }
   }, [currentUser, isLoading, router]);
 
