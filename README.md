@@ -102,7 +102,7 @@ prisma/
 
 ## 📄 文档资源
 
-更多详细文档请参考 `../web-coding-ops/` 目录：
+更多详细文档请参考 `doc/` 目录：
 *   `ARCHITECTURE_GUIDE.md`: 技术架构详解
 *   `DEPLOY_GUIDE.md`: 部署操作流程
 *   `VERCEL_SUPABASE_GUIDE.md`: Vercel & Supabase 原理对照
